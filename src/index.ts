@@ -1,6 +1,12 @@
 import './style.css';
 
-let element = document.createElement('div');
-element.innerHTML = "Test";
+let outerHex = document.createElement('div');
+let innerHex = document.createElement('div');
 
-document.body.append(element);
+outerHex.classList.add('hexagon');
+innerHex.classList.add('hexagon');
+innerHex.classList.add('inner');
+// element.innerHTML = "Test";
+
+document.body.append(outerHex);
+outerHex.append(innerHex);
