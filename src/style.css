@@ -1,8 +1,12 @@
 body {
   --width-hexagon: 100px;
   --ratio: 1.73;
-  --outer-hexagon: rgb(0,0,0);
-  --inner-hexagon: rgb(255,255,255);
+  --outer-hexagon: rgb(0, 0, 0);
+  --inner-hexagon: rgb(255, 255, 255);
+}
+
+.container {
+  transform: rotateX(45deg);
 }
 
 .hexagon::before,
@@ -11,18 +15,19 @@ body {
   position: absolute;
   border-left: calc(var(--width-hexagon) / 2) solid transparent;
   border-right: calc(var(--width-hexagon) / 2) solid transparent;
-  
 }
 
 .hexagon::before {
-    bottom: 100%;
-    border-bottom: calc(var(--width-hexagon) / (var(--ratio)*2)) solid var(--outer-hexagon);
-  }
+  bottom: 100%;
+  border-bottom: calc(var(--width-hexagon) / (var(--ratio) * 2)) solid
+    var(--outer-hexagon);
+}
 
-  .hexagon::after {
-    top: 100%;
-    border-top: calc(var(--width-hexagon) / (var(--ratio)*2)) solid var(--outer-hexagon);
-  }
+.hexagon::after {
+  top: 100%;
+  border-top: calc(var(--width-hexagon) / (var(--ratio) * 2)) solid
+    var(--outer-hexagon);
+}
 
 .hexagon {
   position: relative;
@@ -32,12 +37,27 @@ body {
   margin: 144px auto;
 }
 
+.hexagon.outer {
+  animation: slideTop 1s ease-in-out 0.5s;
+}
+
+@keyframes slideTop {
+  0% {
+    transform: translateY(200px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .hexagon.inner {
-  background-color:var(--inner-hexagon);
-  -webkit-transform: scale(.9, .9);
-  -moz-transform: scale(.9, .9);
-  transform: scale(.9, .9);
-  z-index:1;
+  background-color: var(--inner-hexagon);
+  -webkit-transform: scale(0.9, 0.9);
+  -moz-transform: scale(0.9, 0.9);
+  transform: scale(0.9, 0.9);
+  /* border-color: green; */
+  /* border: 0.5px solid var(--inner-hexagon); */
+  z-index: 1;
 }
 
 .hexagon.inner::before {
